@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting Shop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="col-lg-3">
+        <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_640.jpg" class="card-img-top" alt="Abstract Nature">
+            <div class="card-body text-center">
+                <h6 class="card-title">ABSTRACT NATURE</h6>
+                <button class="btn btn-dark buy-now"
+                    data-title="ABSTRACT NATURE"
+                    data-category="ABSTRACT PAINTING"
+                    data-price="RS 4000"
+                    data-medium="Oil"
+                    data-orientation="Square"
+                    data-color="Acrylic color used"
+                    data-image="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_640.jpg">
+                    Buy Now
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" style="width: 100%; height: auto; max-height: 80vh; object-fit: contain;" src="" alt="Product Image">
+                <p id="modalCategory" class="text-muted mt-3"></p>
+                <h6 id="modalPrice" class="text-primary"></h6>
+                <p><strong>Medium:</strong> <span id="modalMedium"></span></p>
+                <p><strong>Orientation:</strong> <span id="modalOrientation"></span></p>
+                <p style="color: peru; font-weight: bold;">
+                    <span id="modalColor"></span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="generateWord()">Download Word</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".buy-now").click(function () {
+            let title = $(this).data("title");
+            let category = $(this).data("category");
+            let price = $(this).data("price");
+            let image = $(this).data("image");
+            let medium = $(this).data("medium");
+            let orientation = $(this).data("orientation");
+            let color = $(this).data("color");
+
+            $("#modalLabel").text(title);
+            $("#modalCategory").text(category);
+            $("#modalPrice").text(price);
+            $("#modalImage").attr("src", image);
+            $("#modalMedium").text(medium);
+            $("#modalOrientation").text(orientation);
+            $("#modalColor").text(color);
+
+            let myModal = new bootstrap.Modal(document.getElementById('myModal'));
+            myModal.show();
+        });
+    });
+
+    function generateWord() {
+        const title = document.getElementById("modalLabel").innerText;
+        const category = document.getElementById("modalCategory").innerText;
+        const price = document.getElementById("modalPrice").innerText;
+        const medium = document.getElementById("modalMedium").innerText;
+        const orientation = document.getElementById("modalOrientation").innerText;
+        const color = document.getElementById("modalColor").innerText;
+
+        const content = `
+Title: ${title}
+
+Category: ${category}
+Price: ${price}
+Medium: ${medium}
+Orientation: ${orientation}
+Color: ${color}
+`;
+
+        const blob = new Blob([content], { type: "application/msword" });
+        saveAs(blob, `${title}.doc`);
+    }
+</script>
+
+</body>
+</html>

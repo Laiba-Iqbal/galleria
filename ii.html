@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Website Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .footer {
+            background: linear-gradient(to top,#edba4e,rgb(73, 70, 70));
+            color: black;
+            padding: 10px 10px;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            width: 100%;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            
+        }
+        .list {
+            font-size: 40px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-decoration: underline;
+            color: black;
+        }
+        .social-icons {
+            margin: 20px 0;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 12px;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            background: black;
+            color: #edba4e;
+            font-size: 22px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            background: #edba4e;
+            color: black;
+        }
+        .social-icons a i {
+            vertical-align: middle;
+        }
+        .rights {
+            margin: 20px 0 0;
+            font-size: 20px;
+            text-align: center;
+        }
+        .quick-links a, .services-links a {
+            display: block;
+            color: black;
+            font-weight: 200;
+            text-decoration: none;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .quick-links a:hover, .services-links a:hover {
+            text-decoration: underline;
+        }
+        .art-quote {
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 class="list">Art Galleria</h3>
+                <div class="art-quote">“Art speaks where words are unable to explain.”</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/twitter?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="list">Quick Links</h3>
+                <div class="quick-links">
+                    <a href="#">Home</a>
+                    <a href="#">Gallery</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    
+                    
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="list">Services</h3>
+                <div class="services-links">
+                    <a href="service.html">Art Classes</a>
+                    <a href="service.html">Custom Artwork</a>
+                    <a href="service.html">Online Gallery</a>
+                    <a href="service.html">Art Exhibitions</a>
+                    <a href="service.html">Art Supplies</a>
+                </div>
+            </div>
+        </div>
+        <p class="rights">&copy; 2025 Art Galleria | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

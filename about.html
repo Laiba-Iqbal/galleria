@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+      
+      .parent{
+        text-align: center;
+        margin-top: 20px;
+       
+      }
+         .parent h1{
+text-transform: capitalize;
+font-weight: bolder;
+color: black;
+font-family: Arial, sans-serif;
+font-size: 60px;
+text-decoration: underline;
+align-items: center;
+justify-content: center;}
+
+
+h3{
+  text-transform: capitalize;
+font-weight: bolder;
+color: white;
+font-family: Arial, sans-serif;
+font-size: 40px; 
+margin-left: 100px;
+}
+#about{
+  height: 350px;
+  width: 350px;
+  border: 2px solid #ebad4e;
+  
+  margin-top: 10px;
+ 
+  
+}
+p{
+  color: white;
+  font-size: 20px;
+}
+#story{
+  background-image: radial-gradient(circle at right,#ebad4e 20%, black 50%);
+  height: 400px;
+  
+}
+#mission{
+  background-image: radial-gradient(circle at left,#ebad4e 20%, black 50%);
+  height: 400px;
+  
+}
+
+
+ 
+#top{
+  height: 150px;
+}
+.footer {
+            background: linear-gradient(to top,#edba4e,rgb(73, 70, 70));
+            color: black;
+            padding: 10px 10px;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            width: 100%;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            
+        }
+       #aqs {
+            font-size: 40px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-decoration: underline;
+            color: black;
+        }
+        .social-icons {
+            margin: 20px 0;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 12px;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            background: black;
+            color: #edba4e;
+            font-size: 22px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            background: #edba4e;
+            color: black;
+        }
+        .social-icons a i {
+            vertical-align: middle;
+        }
+        .rights {
+            margin: 20px 0 0;
+            font-size: 20px;
+            text-align: center;
+            color: black;
+        }
+        .quick-links a, .services-links a {
+            display: block;
+            color: black;
+            font-weight: 200;
+            text-decoration: none;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .quick-links a:hover, .services-links a:hover {
+            text-decoration: underline;
+            color: #edba4e;
+        }
+        .art-quote {
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 22px;
+        }
+        .topbar {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 5px 20px;
+            font-size: 14px;
+        }
+        .navbar {
+            background-color: #ebad4e;
+            padding: 10px 20px;
+            
+            backdrop-filter: blur(20px);
+        }
+        .navbar-brand {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .navbar-nav {
+            text-align: center;
+            gap: 30px;
+           margin-right: 45px;
+            align-items: center;
+            display: flex;
+        }
+        .navbar-nav .nav-link {
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: white;
+        }
+       
+
+        /* Submenu */
+        .submenu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            background: black;
+            padding: 5px 0;
+            flex-wrap: wrap;
+            height: 60px !important;
+
+        }
+        .submenu a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+            font-family: Arial, sans-serif;
+  margin-top: -9px;
+  align-items: center;
+  display: flex;
+        }
+        .submenu a:hover {
+            color: burlywood;
+        }
+        
+
+.submenu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(136, 92, 178);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    color:burlywood;
+   
+}
+
+.submenu a:hover::after {
+    transform: scaleX(1);
+}
+
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: flex;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: black;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            border: 2px solid rgb(136, 92, 178);
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .submenu {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                
+            }
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+            }
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+          
+           
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        /* Button to open sidebar */
+        .open-btn {
+           margin-left: 215px;
+            top: 20px;
+            left: 20px;
+          
+            background-color:#ebad4e;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: -20px;
+            border-radius: 50px;
+            border: 1px solid black;
+            width: 120px;
+            height: 40px;
+        }
+        .open-btn:hover{
+            color: burlywood;
+            background-color:black;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;  /* Hidden initially */
+            width: 300px;
+            height: 100%;
+            background:black;
+            color: rgb(249, 242, 242);
+            padding: 20px;
+            transition: right 0.3s ease-in-out;
+            z-index: 9999;
+}
+@media (max-width: 768px) {
+    .open-btn {
+        margin: 10px auto;
+        display: block;
+        width: 120px;  /* Fixed width */
+        height: 40px;  /* Fixed height */
+        font-size: 16px;
+        text-align: center;
+        
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .nav-item {
+        display: block;
+    }
+}
+
+        /* Show sidebar */
+        .sidebar.active {
+            right: 0;
+        }
+
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Overlay effect */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .overlay.active {
+            display: flex;
+        }
+ 
+  
+          
+        
+    </style>
+</head>
+<body>
+    
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <img style="height: 60px;" src="art-removebg-preview.png" alt="">
+
+        <a class="navbar-brand" href="#">GALLERIA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto ">
+              <li  class="nav-item"><a class="nav-link" href="home.html">HOME</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT US</a></li>
+              <li class="nav-item"><a class="nav-link" href="service.html">SERVICES</a></li>
+             <li class="nav-item"> <button  class="open-btn">Sign Up</button></li>
+                
+            </ul>
+            
+          
+        </div>
+    </div>
+</nav>
+
+
+<!-- Submenu -->
+<div class="submenu">
+    <a href="painting.html">PAINTINGS</a>
+    <div class="dropdown">
+        <a href="#">GALLERY</a>
+        <div class="dropdown-content">
+            <a href="abstract.html">Abstract Paintings</a>
+            <a href="landscape.html">Landscape Paintings</a>
+            <a href="flower.html">Flower Paintings</a>
+            <a href="nature.html">Nature Paintings</a>
+            <a href="figurative.html">Figurative Paintings</a>
+            <a href="religious.html">Religious Paintings</a>
+        </div>
+    </div>
+    <a href="mandalas.html">MANDALAS</a>
+    <a href="calligraphy.html">CALLIGRAPHY</a>
+</div>
+ <!-- side bar -->
+ <div class="overlay" id="overlay"></div>
+
+ <div class="sidebar" id="sidebar">
+     <span class="close-btn" id="close-btn">&times;</span>
+     <h2 style="margin-left: 5px;" >Sign Up</h2>
+    
+    
+     <label style="color: #ebad4e;">Username or email:</label>
+     <input style="border-radius: 10px;border: 1px solid white;" type="text" id="username" placeholder="Enter username or email"><br><br>
+     
+     <label style="color: #ebad4e;">Password:</label>
+     <input style="border-radius: 10px;border: 1px solid white;" type="password" id="password" placeholder="Enter password"><br><br>
+     
+     <button onclick="login()" style="text-align: center;margin-top: 10px;width: 200px;height: 35px; border-radius: 15px; text-align: center; border-bottom: 1px solid #ebad4e;background-color: #ebad4e;margin-left: 0px;">Sign Up</button>
+     <p id="message"></p>
+ </div>
+ 
+    <div class="parent">
+        <img id="top" src="logo.jpg" alt="">
+        <div id="story" class="container mt-lg-5">
+          <div class="row">
+            <div  class="col-lg-6"> margin-left: 50px;
+           
+                <div class="box">
+                 <img id="about" src="about.jpg" alt="">
+                 
+ 
+  
+                </div>
+               </div> 
+    
+              <div  class="col-lg-6 mt-lg-5">
+                <div class="box">
+                
+                  <h3>our story</h3>
+                
+                <p id="para">Work less, achieve more. We believe that no matter whether you are a gallerist, an artist or a collector, technology should be there to support you in achieving more with less effort. Discover the comprehensive all-in-one platform for art management, art marketing and sales, and website creation services to help you manage your collections, keep your data organized, automate and grow your art business.</p>
+                
+                </div>
+               </div>
+                 
+          </div>
+        </div>
+        <div id="mission" class="container mt-lg-5">
+            <div class="row">
+                    <div class="col-lg-6 mt-lg-5">
+                      <div class="box">
+                      
+                        <h3>our mission</h3>
+                      
+                      <p id="para">We make it our mission to create an innovative, efficient, easy to use and powerful technology platform to enable you to keep your art organized, nurture your client relationships and save you an astronomical amount of time. With a knowledgeable team of software developers and experts in technology, it’s easy to see why we have emerged as global market leaders in the art industry.</p>
+                      </div>
+                    </div>
+                      <div  class="col-lg-6">
+                        <div class="box">
+                         <img id="about" src="about2.jpg" alt="">
+                         
+                        </div>
+                       </div>
+                      
+                      </div>
+                     </div>
+            </div>
+                <!-- footer -->
+          
+      
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+      <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 id="aqs" style="color: #edba4e; text-decoration: none;">Art Galleria</h3>
+                <div class="art-quote">“Art speaks where words are unable to explain.”</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/twitter?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 id="aqs" style="color: #edba4e;text-decoration: none;">Quick Links</h3>
+                <div class="quick-links">
+                    <a style="text-decoration: none;" href="newhome.html">Home</a>
+                   <a style="text-decoration: none;"  href="painting.html">Gallery</a>
+                    <a style="text-decoration: none;" href="about.html">About</a>
+                    <a style="text-decoration: none;" href="contact2.html">Contact</a>
+                    
+                    
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 id="aqs" style="color: #edba4e;text-decoration: none;">Services</h3>
+                <div class="services-links">
+                    <a style="text-decoration: none;" href="service.html">Art Classes</a>
+                    <a style="text-decoration: none;" href="service.html">Custom Artwork</a>
+                    <a style="text-decoration: none;" href="service.html">Online Gallery</a>
+                    <a style="text-decoration: none;" href="service.html">Art Exhibitions</a>
+                    <a style="text-decoration: none;" href="service.html">Art Supplies</a>
+                </div>
+            </div>
+        </div>
+        <p class="rights">&copy; 2025 Art Galleria | All Rights Reserved</p>
+    </footer>    
+    <script>
+        // Get elements
+        const openBtn = document.querySelector(".open-btn");
+        const sidebar = document.getElementById("sidebar");
+        const closeBtn = document.getElementById("close-btn");
+        const overlay = document.getElementById("overlay");
+
+        // Open sidebar
+        openBtn.addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        // Close sidebar
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+
+        // Close when clicking outside sidebar
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+    </script> 
+</body>
+</html>

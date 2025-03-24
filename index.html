@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>our home page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+     
+          
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: visible;
+        }
+        .topbar {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 5px 20px;
+            font-size: 14px;
+        }
+        .navbar {
+            background-color: #ebad4e;
+            padding: 10px 20px;
+            
+            backdrop-filter: blur(20px);
+        }
+        .navbar-brand {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .navbar-nav {
+            text-align: center;
+            gap: 30px;
+           margin-right: 35px;
+            align-items: center;
+            display: flex;
+            
+        }
+        .navbar-nav .nav-link {
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: white;
+        }
+       
+
+        /* Submenu */
+        .submenu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            background: black;
+            padding: 5px 0;
+            flex-wrap: wrap;
+            height: 60px !important;
+
+        }
+        .submenu a {
+            text-decoration: none;
+            color: white;
+            padding: 25px;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+            font-family: Arial, sans-serif;
+  margin-top: -9px;
+  align-items: center;
+  display: flex;
+  font-weight: ;
+        }
+        .submenu a:hover {
+            color: burlywood;
+        }
+        
+
+.submenu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(136, 92, 178);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    color:burlywood;
+   
+}
+
+.submenu a:hover::after {
+    transform: scaleX(1);
+}
+
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: flex;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: black;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            border: 2px solid rgb(136, 92, 178);
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* responsive for submenu */
+        @media screen and (max-width: 768px) {
+    .submenu {
+        flex-direction: column;
+        align-items: center;
+        height: auto !important;
+        padding: 10px 0;
+    }
+
+    .submenu a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
+        /* Mobile Responsive */
+        
+        body {
+            font-family: Arial, sans-serif;
+          
+            
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        /* Button to open sidebar */
+        .open-btn {
+           margin-left: 215px;
+            top: 20px;
+            left: 20px;
+          
+            background-color:#ebad4e;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: -20px;
+            border-radius: 50px;
+            border: 1px solid black;
+            width: 120px;
+            height: 40px;
+        }
+        .open-btn:hover{
+            color: burlywood;
+            background-color:black;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;  /* Hidden initially */
+            width: 300px;
+            height: 100%;
+            background:black;
+            color: rgb(249, 242, 242);
+            padding: 20px;
+            transition: right 0.3s ease-in-out;
+            z-index: 9999;
+            
+}
+             
+
+        /* Show sidebar */
+        .sidebar.active {
+            right: 0;
+        }
+
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Overlay effect */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .overlay.active {
+            display: flex;
+        }
+       
+       
+        
+    
+@media (max-width: 768px) {
+    .open-btn {
+        margin: 10px auto;
+        display: block;
+        width: 120px;  /* Fixed width */
+        height: 40px;  /* Fixed height */
+        font-size: 16px;
+        text-align: center;
+        
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .nav-item {
+        display: block;
+    }
+}
+
+.details p {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+    
+}
+
+.details p strong {
+    color: black;
+    flex: 0.2; /* Left side text */
+}
+
+.details p span {
+    color: grey;
+    flex: 1; /* Right side value */
+    text-align: right;
+}
+
+.container {
+    flex: 1 !important;  /* Content ko flexible banane ke liye */
+}
+
+.video-container {
+            width: 100%;
+            max-height: 700px; /* Adjust height as needed */
+            overflow: hidden;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+#category{
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-bottom: 50px;
+    margin-left: 400px;
+}
+
+.card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 5px 5px 8px wheat;
+          
+        }
+        .card {
+    height: 400px; /* Adjust as needed */
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card img {
+    height:300px; /* Adjust image height */
+    object-fit: cover; /* Ensures image fits well */
+}
+.card-body {
+    padding: 10px; /* Reduce padding to save space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aligns content evenly */
+    height: 100%; /* Ensures full height */
+  
+}
+
+.card-body button {
+    margin-top: auto; /* Pushes button to the bottom */
+}
+button{
+  width: 100px;
+  margin-left: 70px;
+}
+h5{
+    font-size: 25px;
+}
+@media (max-width: 768px) {
+    .card-body button {
+        display: block;
+        margin: 0 auto; /* Center align on small screens
+    } */
+}}
+.footer {
+            background: linear-gradient(to top,#edba4e,rgb(73, 70, 70));
+            color: black;
+            padding: 10px 10px;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            
+        }
+        .footer-column h3 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+        .social-icons {
+            margin: 20px 0;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 12px;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            background: black;
+            color: #edba4e;
+            font-size: 22px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            background: #edba4e;
+            color: black;
+        }
+        .social-icons a i {
+            vertical-align: middle;
+        }
+        .footer p {
+            margin: 20px 0 0;
+            font-size: 20px;
+            text-align: center;
+        }
+        .quick-links a, .services-links a {
+            display: block;
+            color: black;
+            font-weight: 200;
+            text-decoration: none;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .quick-links a:hover, .services-links a:hover {
+            text-decoration: underline;
+        }
+        .art-quote {
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 22px;
+        }
+        *{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.card {background-image: linear-gradient();
+            transition: transform 0.3s;
+            
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow:2px 3px 5px #f4bc68 ;
+          
+        }
+        .card {
+    height: 400px; /* Adjust as needed */
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card img {
+    height:300px; /* Adjust image height */
+    object-fit: cover; /* Ensures image fits well */
+}
+.card-body {
+    padding: 10px; /* Reduce padding to save space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aligns content evenly */
+    height: 100%; /* Ensures full height */
+  
+}
+
+.card-body button {
+    margin-top: auto; /* Pushes button to the bottom */
+}
+button{
+  width: 100px;
+  margin-left: 70px;
+}
+h6{
+  font-size: 15x;
+  color: blue;
+  font-weight: bold;
+}
+@media(max-width: 786px){
+  .card-body button{
+    display: block;
+    margin: 0 auto;
+  }
+}
+img{
+    height: 300px;
+}
+
+a:hover{
+    color: #ebad4e;
+    font-weight: bold;
+}
+@media (max-width: 480px) {
+            .video-container {
+                padding-bottom: 75%; /* Adjust aspect ratio for mobile */
+            }
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* Adjust size for tablets */
+@media (max-width: 768px) {
+    #category {
+        font-size: 2rem;
+        margin-left: 135px;
+    }
+}
+
+/* Adjust size for mobile screens */
+@media (max-width: 480px) {
+    #category {
+        font-size: 1.5rem;
+        margin-left: 135px;
+    }
+}
+.parent{
+        text-align: center;
+        margin-top: 20px;
+        height: 700px;
+       
+      }
+         .parent h1{
+text-transform: capitalize;
+font-weight: bolder;
+color: black;
+font-family: Arial, sans-serif;
+font-size: 60px;
+text-decoration: underline;
+align-items: center;
+justify-content: center;}
+
+
+.parent h3{
+  text-transform: capitalize;
+font-weight: bolder;
+color: white;
+font-family: Arial, sans-serif;
+font-size: 50px; 
+margin-left: 80px;
+margin-top: 40px;
+
+}
+#about{
+  height: 350px;
+  width: 350px;
+  border: 2px solid #ebad4e;
+box-shadow: 2px 4px 6px;
+  margin-top: 20px;
+ 
+  
+}
+#para{
+  color: yellow;
+  font-size: 20px;
+}
+#story{
+  background-image: radial-gradient(circle at right,#ebad4e 20%, black 50%);
+  height: 400px;
+}
+    </style>
+</head>
+<body>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var errorMessage = document.getElementById('error-message');
+  
+      if (username === "admin" && password === "1234") {
+          errorMessage.textContent = "";
+          alert("Login Successful!");
+      } else {
+          errorMessage.textContent = "Invalid username or password!";
+      }
+  });
+  
+      </script>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img style="height: 60px;" src="art-removebg-preview.png" alt="">
+            <a class="navbar-brand" href="#">GALLERIA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto ">
+                    <li  class="nav-item"><a class="nav-link" href="home.html">HOME</a></li>
+                   
+                    <li class="nav-item"><a class="nav-link" href="about.html">ABOUT US</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT US</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">SERVICES</a></li>
+                   <li class="nav-item"> <button  class="open-btn">Sign Up</button></li>
+                  
+                </ul>
+                
+              
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Submenu -->
+    <div class="submenu">
+        <a href="painting.html">PAINTINGS</a>
+        <div class="dropdown">
+            <a href="#">GALLERY</a>
+            <div class="dropdown-content">
+                <a href="abstract.html">Abstract Paintings</a>
+                <a href="landscape.html">Landscape Paintings</a>
+                <a href="flower.html">Flower Paintings</a>
+                <a href="nature.html">Nature Paintings</a>
+                <a href="figurative.html">Figurative Paintings</a>
+                <a href="religious.html">Religious Paintings</a>
+            </div>
+        </div>
+        <a href="mandalas.html">MANDALAS</a>
+        <a href="calligraphy.html">CALLIGRAPHY</a>
+    </div>
+    
+     
+    
+    
+    
+         <!-- side bar -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <h2 style="margin-left: 5px;" >Sign Up </h2>
+       
+       
+        <label style="color: #ebad4e;">Username or email:</label>
+        <input style="border-radius: 10px;border: 1px solid white;" type="text" id="username" placeholder="Enter username or email"><br><br>
+        
+        <label style="color: #ebad4e;">Password:</label>
+        <input style="border-radius: 10px;border: 1px solid white;" type="password" id="password" placeholder="Enter password"><br><br>
+        
+        <button onclick="login()" style="text-align: center;margin-top: 10px;width: 200px;height: 35px; border-radius: 15px; text-align: center; border-bottom: 1px solid #ebad4e;background-color: #ebad4e;margin-left: 0px;">Sign Up</button>
+        <p id="message"></p>
+    </div>
+    
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var message = document.getElementById("message");
+    
+            if (username === "admin" && password === "1234") {
+                message.style.color = "green";
+                message.innerText = "Login successful!";
+            } else {
+                message.style.color = "red";
+                message.innerText = "Invalid username or password!";
+            }
+        }
+    </script>
+    
+      
+    <!-- bushra work -->
+   
+ 
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="paintingvideo.mp4" type="video/mp4">
+           
+        </video>
+        
+      </div> 
+     
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 col-12 text-center"><img id="about" src="uu.jpg" alt=""class="img-fluid">
+                </div>
+                <div class="col-lg-6 col-md-6 col-12 text-center text-md-start"> <h1 style="color: #ebad4e;text-decoration: underline;font-family: ALGERIAN;">INTRODUCTION</h1> <p style="font-weight: bold;font-family:vivaldi ;font-size: 30px;" >Galleria is certified company engaged in selling wide variety of paintings. The ever-
+                    increasing acceptance of the products on global platform highlights our market
+                    presence and goodwill. The company has maintained its market value throughout the
+                    world.</p>
+                </div>
+            </div>
+        </div>
+
+      <div class="container mt-5"> 
+       <h1 style="text-decoration: underline; font-family: vivaldi;font-size:60px;te" id="category"><span style="color: #ebad4e;">O</span>ur <SPan style="color: #ebad4e;" >C</SPan>ategories</h1>
+        <div class="row">
+            <div  class="col-lg-3">
+                <div class="card" >
+                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvQtBHfezI1KPPesTpKm6iHea99xPngUnRdw&s" class="card-img-top" alt="..."> 
+                    <div  class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >A</SPan>bstract <SPan style="color: #ebad4e;" >P</SPan>ainting</h5>
+                     
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px" href="abstract.html">EXPLORE</a></button>
+
+                     
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe6g1Qn045YKGqjGbmMAt7D7L_WZF9WI5omw&s" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >L</SPan>andscape <SPan style="color: #ebad4e;" >P</SPan>ainting</h5>
+                     
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px" href="landscape.html">EXPLORE</a></button>
+
+                     
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card" >
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT92KPlaHMkOvR8Bt0s1MotnMQd1r1UZUrJtg&s" alt="">
+                    <div class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >F</SPan>lower <SPan style="color: #ebad4e;font-size: 15px" >P</SPan>ainting</h5>
+                      
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px" href="flower.html">EXPLORE</a></button>
+
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuBvjekm0GQthQwzAZs361crZ4XA28hnWsYQ&s" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >N</SPan>ature <SPan style="color: #ebad4e;" >P</SPan>ainting</h5>
+                      
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px" href="nature.html">EXPLORE</a></button>
+
+                    </div>
+                  </div>
+                 
+            </div>
+
+        </div>
+    </div>
+    <!-- second container -->
+    <div class="container mt-5"> 
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card" >
+                    <img  src="https://ik.imagekit.io/theartling/prod/products/Product/7de5f23ad7744a87843baaf1994b7763_sw-2362_sh-4015.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >F</SPan>igurative <SPan style="color: #ebad4e;" >P</SPan>ainting</h5>
+                      
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px" href="figurative.html">EXPLORE</a></button>
+
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4R0yDYsZmqgfeXAnA3FalMvSq2eAEbCgwyA&s" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >R</SPan>eligious <SPan style="color: #ebad4e;" >P</SPan>ainting</h5>
+                     
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px" href="religious card.html">EXPLORE</a></button>
+
+                      
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card" >
+                    <img src="https://cdn.pixabay.com/photo/2022/05/24/19/07/birds-7219125_640.png" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >C</SPan>alligraphy</h5>
+                      
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px" href="calligrapghy.html">EXPLORE</a></button>
+
+                    
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="https://i.pinimg.com/236x/dc/c3/a5/dcc3a5d82e7562cc1138e7057af4d4ec.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="font-weight: bold;" class="card-title"><SPan style="color: #ebad4e;" >M</SPan>andalas</h5>
+                     
+                      <button style="background-color: rgb(104, 101, 101);border: 1px solid #ebad4e;" class="btn btn-dark"><a style="text-decoration: none;color: #ebad4e;font-size: 15px;" href="mandalas,.html ">EXPLORE</a></button>
+
+                    </div>
+                  </div>
+                 
+            </div>
+
+        </div>
+    </div>
+  
+  
+                        
+                    
+            
+                
+    
+   
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>   
+
+    <script>
+        // Get elements
+        const openBtn = document.querySelector(".open-btn");
+        const sidebar = document.getElementById("sidebar");
+        const closeBtn = document.getElementById("close-btn");
+        const overlay = document.getElementById("overlay");
+
+        // Open sidebar
+        openBtn.addEventListener("click", () => {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+
+        // Close sidebar
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+
+        // Close when clicking outside sidebar
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 style="color: #edba4e; text-decoration: none;">Art Galleria</h3>
+                <div class="art-quote">“Art speaks where words are unable to explain.”</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/twitter?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 style="color: #edba4e;text-decoration: none;">Quick Links</h3>
+                <div class="quick-links">
+                    <a style="text-decoration: none;" href="home.html">Home</a>
+                   <a style="text-decoration: none;"  href="painting.html">Gallery</a>
+                    <a style="text-decoration: none;" href="about.html">About</a>
+                    <a style="text-decoration: none;" href="contact.html">Contact</a>
+                    
+                    
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 style="color: #edba4e;text-decoration: none;">Services</h3>
+                <div class="services-links">
+                    <a style="text-decoration: none;" href="service.html">Art Classes</a>
+                    <a style="text-decoration: none;" href="service.html">Custom Artwork</a>
+                    <a style="text-decoration: none;" href="service.html">Online Gallery</a>
+                    <a style="text-decoration: none;" href="service.html">Art Exhibitions</a>
+                    <a style="text-decoration: none;" href="service.html">Art Supplies</a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2025 Art Galleria | All Rights Reserved</p>
+    </footer>
+    
+
+</body>
+</html>

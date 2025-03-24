@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIGURATIVE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<style> 
+.video-container {
+            width: 100%;
+            max-height: 700px; /* Adjust height as needed */
+            overflow: hidden;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+  body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: visible;
+        }
+        .topbar {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 5px 20px;
+            font-size: 14px;
+        }
+        .navbar {
+            background-color: #ebad4e;
+            padding: 10px 20px;
+            
+            backdrop-filter: blur(20px);
+        }
+        .navbar-brand {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .navbar-nav {
+            text-align: center;
+            gap: 30px;
+           margin-right: 45px;
+            align-items: center;
+            display: flex;
+        }
+        .navbar-nav .nav-link {
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: white;
+        }
+       
+
+        /* Submenu */
+        .submenu {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            background: black;
+            padding: 5px 0;
+            flex-wrap: wrap;
+            height: 60px !important;
+
+        }
+        .submenu a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+            font-family: Arial, sans-serif;
+  margin-top: -9px;
+  align-items: center;
+  display: flex;
+        }
+        .submenu a:hover {
+            color: burlywood;
+        }
+        
+
+.submenu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(136, 92, 178);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    color:burlywood;
+   
+}
+
+.submenu a:hover::after {
+    transform: scaleX(1);
+}
+
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: flex;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: black;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            border: 2px solid rgb(136, 92, 178);
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .submenu {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                
+            }
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+            }
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+          
+           
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        /* Button to open sidebar */
+        .open-btn {
+           margin-left: 215px;
+            top: 20px;
+            left: 20px;
+          
+            background-color:#ebad4e;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: -20px;
+            border-radius: 50px;
+            border: 1px solid black;
+            width: 120px;
+            height: 40px;
+        }
+        .open-btn:hover{
+            color: burlywood;
+            background-color:black;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;  /* Hidden initially */
+            width: 300px;
+            height: 100%;
+            background:black;
+            color: rgb(249, 242, 242);
+            padding: 20px;
+            transition: right 0.3s ease-in-out;
+            z-index: 9999;
+}
+             
+
+        /* Show sidebar */
+        .sidebar.active {
+            right: 0;
+        }
+
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Overlay effect */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .overlay.active {
+            display: flex;
+        }
+ 
+  
+          
+  *{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .card {background-image: linear-gradient();
+              transition: transform 0.3s;
+              
+          }
+          .card:hover {
+              transform: scale(1.05);
+              box-shadow:2px 3px 5px #f4bc68 ;
+            
+          }
+          .card {
+      height: 400px; /* Adjust as needed */
+      overflow: hidden;
+      transition: transform 0.3s;
+  }
+  
+  .card img {
+      height:300px; /* Adjust image height */
+      object-fit: cover; /* Ensures image fits well */
+  }
+  .card-body {
+      padding: 10px; /* Reduce padding to save space */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Aligns content evenly */
+      height: 100%; /* Ensures full height */
+    
+  }
+  
+  .card-body button {
+      margin-top: auto; /* Pushes button to the bottom */
+  }
+  button{
+    width: 100px;
+    margin-left: 70px;
+  }
+  h6{
+    font-size: 15x;
+    color: blue;
+    font-weight: bold;
+  }
+  @media(max-width: 786px){
+    .card-body button{
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .modal-body img {
+      width: 100%; /* Full width */
+      height: auto; /* Maintain aspect ratio */
+      object-fit: contain; /* Ensures full image is visible */
+      max-height: 80vh; /* Prevents overflow */
+  }
+  .modal-footer {
+      display: flex;
+      justify-content: center; /* ✅ Center the buttons */
+      gap: 10px; /* ✅ Adds space between buttons */
+  }
+  .btn-primary {
+      background-color: #ebad4e !important;
+      border: none !important;
+      padding: 10px 20px !important;
+      font-size: 18px !important;
+      border-radius: 8px !important;
+      width: 400px;
+      margin-left: 100px;
+  }
+  
+  .btn-danger {
+      background-color: #dc3545 !important;
+      border: none !important;
+      padding: 10px 20px !important;
+      font-size: 18px !important;
+      border-radius: 8px !important;
+  }
+  @media (max-width: 576px) {  
+      .modal-footer {
+         text-align: center;
+         
+        };
+        
+    }
+    #modalPrice {
+      color: #ebad4e !important; /* ✅ Red Color (Bootstrap Danger) */
+      font-weight: bold; /* ✅ Bold text */
+      font-size: 20px; /* ✅ Larger font */
+  }
+  .modal-title {
+      text-align: center;
+      width: 100%;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 40px;
+      text-decoration: underline;
+      color: #ebad4e;
+  }
+  
+  #download{
+    background-color: #ebad4e;
+    border: 1px solid #ebad4e;
+    width: 150px;
+    height: 50px;
+
+    }
+    
+    .footer {
+            background: linear-gradient(to top,#edba4e,rgb(73, 70, 70));
+            color: black;
+            padding: 10px 10px;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            
+        }
+        .list {
+            font-size: 40px;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .social-icons {
+            margin: 20px 0;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 12px;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            background: black;
+            color: #edba4e;
+            font-size: 22px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            background: #edba4e;
+            color: black;
+        }
+        .social-icons a i {
+            vertical-align: middle;
+        }
+        .rights {
+            margin: 20px 0 0;
+            font-size: 20px;
+            text-align: center;
+        }
+        .quick-links a, .services-links a {
+            display: block;
+            color: black;
+            font-weight: 200;
+            text-decoration: none;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .quick-links a:hover, .services-links a:hover {
+            text-decoration: underline;
+        }
+        .art-quote {
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 22px;
+        }
+          
+        .quick-links a:hover{
+            color: #edba4e!important;
+        }
+        h3{
+            color: #ebad4e !important;
+            text-decoration: none !important;
+        }
+        .services-links a:hover{
+            color: #ebad4e;
+        }
+         /* responsive for submenu */
+         @media screen and (max-width: 768px) {
+    .submenu {
+        flex-direction: column;
+        align-items: center;
+        height: auto !important;
+        padding: 10px 0;
+    }
+
+    .submenu a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
+        /* Mobile Responsive */
+        
+        body {
+            font-family: Arial, sans-serif;
+          
+            
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+         /* responsive for submenu */
+         @media screen and (max-width: 768px) {
+    .submenu {
+        flex-direction: column;
+        align-items: center;
+        height: auto !important;
+        padding: 10px 0;
+    }
+
+    .submenu a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
+        /* Mobile Responsive */
+        
+        body {
+            font-family: Arial, sans-serif;
+          
+            
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        @media (max-width: 480px) {
+            .video-container {
+                padding-bottom: 75%; /* Adjust aspect ratio for mobile */
+            }
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+@media (max-width: 768px) {
+    .card-body button {
+        display: block;
+        margin: 0 auto; /* Center align on small screens
+    } */
+}}
+
+/* Adjust size for tablets */
+@media (max-width: 768px) {
+    #category {
+        font-size: 2rem;
+        margin-left: 135px;
+    }
+}
+
+/* Adjust size for mobile screens */
+@media (max-width: 480px) {
+    #category {
+        font-size: 1.5rem;
+        margin-left: 135px;
+    }
+}
+@media (max-width: 768px) {
+    .card {
+      margin-bottom: 15px; /* Space between cards */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .card {
+      margin-bottom: 10px;
+    }
+  }
+          
+</style>
+
+
+<body>
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <img style="height: 60px;" src="art-removebg-preview.png" alt="">
+      <a class="navbar-brand" href="#">GALLERIA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto ">
+              <li  class="nav-item"><a class="nav-link" href="home.html">HOME</a></li>
+              <li class="nav-item"><a class="nav-link" href="service.html">SERVICES</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT US</a></li>
+             <li class="nav-item"> <button  class="open-btn">Sign Up</button></li>
+              
+          </ul>
+          
+        
+      </div>
+  </div>
+</nav>
+
+
+<!-- Submenu -->
+<div class="submenu">
+  <a href="painting.html">PAINTINGS</a>
+  <div class="dropdown">
+      <a href="#">GALLERY</a>
+      <div class="dropdown-content">
+          <a href="abstract.html">Abstract Paintings</a>
+          <a href="landscape.html">Landscape Paintings</a>
+          <a href="flower.html">Flower Paintings</a>
+          <a href="nature.html">Nature Paintings</a>
+          <a href="figurative.html">Figurative Paintings</a>
+          <a href="religious.html">Religious Paintings</a>
+      </div>
+  </div>
+  <a href="mandalas.html">MANDALAS</a>
+  <a href="calligraphy.html">CALLIGRAPHY</a>
+</div>
+
+<!-- Hero Section -->
+
+
+
+   <!-- side bar -->
+<div class="overlay" id="overlay"></div>
+
+<div class="sidebar" id="sidebar">
+  <span class="close-btn" id="close-btn">&times;</span>
+  <h2>Sign Up </h2>
+  <p style="color: #ebad4e;">Username or email:</p>
+  <input type="text" placeholder="Enter username or email"><br><br>
+  <p style="color: #ebad4e;">Password:</p> 
+  <input type="password" placeholder="Enter password"><br><br>
+  <button style="margin-top: 10px;width: 200px;height: 35px; border-radius: 15px; text-align: center; border-bottom: 1px solid #ebad4e;background-color: #ebad4e;margin-left: 0px;">Sign Up</button>
+</div>
+<div class="video-container">
+    <video autoplay loop muted>
+        <source src="figurvideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> </div>
+  
+    <div class="container mt-5"> 
+        <div class="row">
+            <div  class="col-lg-3">
+                <div class="card" >
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLZZSnA1SYKseJBwR5c2WKHfV62ivd_lEx4Q&s" class="card-img-top" alt="..."> 
+                    <div  class="card-body text-center">
+                      <h5 class="card-title">FIGURATIVE ART</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="FIGURATIVE ART"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 3000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLZZSnA1SYKseJBwR5c2WKHfV62ivd_lEx4Q&s">
+                    
+                      
+                      SEE DETAILS</button>
+                      
+                     
+
+                     
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhjLG7kcX0AfHEoktW6nfho9_lyOHAmf7Aag&s" class="card-img-top" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">LITTLE GIRL PORTRAIT</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="LITTLE GIRL PORTRAIT"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 900"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhjLG7kcX0AfHEoktW6nfho9_lyOHAmf7Aag&s">
+                    
+                      
+                      SEE DETAILS</button>
+                     
+
+                     
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card" >
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgMdF-iambEssf4pbBfU5ZoYcDxjFNfQW8rw&s" class="card-img-top" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ABSTRACT FIGURATIVE</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="ABSTRACT FIGURATIVE"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 1000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgMdF-iambEssf4pbBfU5ZoYcDxjFNfQW8rw&s">
+                    
+                      
+                      SEE DETAILS</button>
+                     
+                     
+
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkW-N50y0AA_cGDIwj3CVIQuNfPnZr2KmICg&s" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">FEMALE PORTARIT DRAWING</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="FEMALE PORTARIT DRAWING"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 2000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkW-N50y0AA_cGDIwj3CVIQuNfPnZr2KmICg&s">
+                    
+                      
+                      SEE DETAILS</button>
+                     
+          
+
+                    </div>
+                  </div>
+                 
+            </div>
+
+        </div>
+    </div>
+    <!-- second container -->
+    <div class="container mt-5"> 
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card" >
+                    <img src="https://m.media-amazon.com/images/I/71PGQp6hYfL._AC_UF894,1000_QL80_.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Acrylic Canvas Painting</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="ARCYLIC CANVAS PAINTING"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 3000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://m.media-amazon.com/images/I/71PGQp6hYfL._AC_UF894,1000_QL80_.jpg">
+                    
+                      
+                      SEE DETAILS</button>
+                      
+                     
+
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img height="260px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvNgURuZJFMlPF4pyDw20ANmYRgx-2hW_TL1qExFG3Tj_EtSwJy13cdajUkdQJ3rnm-rU&usqp=CAU" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Modern Abstract Face</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="MODERN ABSTRACT FACE"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 1000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvNgURuZJFMlPF4pyDw20ANmYRgx-2hW_TL1qExFG3Tj_EtSwJy13cdajUkdQJ3rnm-rU&usqp=CAU">
+                    
+                      
+                      SEE DETAILS</button>
+                    
+
+                      
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card" >
+                    <img src="https://ik.imagekit.io/theartling/prod/products/Product/7de5f23ad7744a87843baaf1994b7763_sw-2362_sh-4015.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Figurative Art Style</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="FIGURATIVE ART STYLE"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 2000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://ik.imagekit.io/theartling/prod/products/Product/7de5f23ad7744a87843baaf1994b7763_sw-2362_sh-4015.jpg">
+                    
+                      
+                      SEE DETAILS</button>
+                      
+                     
+
+                    
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="https://cdn11.bigcommerce.com/s-x49po/images/stencil/1500x1500/products/127020/294011/handmade%2Fdownscaled%2Fh_jytxtd7l7lq_2000x2000__87416.1711348774.jpg?c=2" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Expressive Figurative Art</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="EXPRESSIVE FIGURATIVE ART"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 3000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://cdn11.bigcommerce.com/s-x49po/images/stencil/1500x1500/products/127020/294011/handmade%2Fdownscaled%2Fh_jytxtd7l7lq_2000x2000__87416.1711348774.jpg?c=2">
+                    
+                      
+                      SEE DETAILS</button>
+
+                      
+
+                    </div>
+                  </div>
+                 
+            </div>
+
+        </div>
+    </div>
+    <!-- third container -->
+    <div class="container mt-5"> 
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card" >
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsLUJtbKk3w2IQzXTfZrwOCqwoskEPmYjNA&s"class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Abstract Cat Arcylic</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="ABSTRACT CAT ARYLIC"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 3000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsLUJtbKk3w2IQzXTfZrwOCqwoskEPmYjNA&s">
+                    
+                      
+                      SEE DETAILS</button>
+                      
+                      
+
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <img src="https://royalthaiart.com/wp-content/uploads/2019/02/horse-painting-acrylic-for-sale-1020x1024.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Royal Horse Pair</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="ROYAL HORSE PAIR"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 1500"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://royalthaiart.com/wp-content/uploads/2019/02/horse-painting-acrylic-for-sale-1020x1024.jpg">
+                    
+                      
+                      SEE DETAILS</button>
+                      
+
+                     </div>
+                </div>
+                 
+            </div>
+            <div class="col-lg-3">
+                <div class="card" >
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0uLk18cPdJOjpqMbQiIbqkbyCktgvJ2VeQg&s" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Kingfisher On A Branch</h5>
+                      <button class="btn btn-dark buy-now"
+                      data-title="KINGFISHER ON A BRANCH"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 3000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0uLk18cPdJOjpqMbQiIbqkbyCktgvJ2VeQg&s">
+                    
+                      
+                      SEE DETAILS</button>
+
+                    </div>
+                  </div>
+                 
+            </div>
+            <div class="col-lg-3 ">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwOzUJVImso_OE6tTjKDvv1oMvAgT3-tsAoQ&s" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 style="text-transform: uppercase;" class="card-title">Swan With Sunset</h5>
+                      
+                      <button class="btn btn-dark buy-now"
+                      data-title="SWAN WITH SUNSET"
+                      data-category="FIGURATIVE PAINTING" 
+                      data-price="RS 1000"
+                      data-medium="Oil"
+                      data-orientation="Square"
+                      data-color="Acrylic color used" 
+                      data-image="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_640.jpg">
+                    
+                      
+                      SEE DETAILS</button>
+
+                    </div>
+                  </div>
+                 
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-center">
+                  <img id="modalImage" style="width: 100%; height: auto; max-height: 80vh; object-fit: contain;" src="" alt="Product Image">
+                  <p id="modalCategory" class="text-muted mt-3"></p>
+                  <h6 id="modalPrice" class="text-primary"></h6>
+                  <p><strong>Medium:</strong> <span id="modalMedium"></span></p>
+                  <p><strong>Orientation:</strong> <span id="modalOrientation"></span></p>
+                  <p style="color: peru; font-weight: bold;">
+                      <span id="modalColor"></span>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                <button id="download" class="btn btn-success" onclick="generateWord()">Download Word</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+    </div>
+      <!-- footer -->
+      <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 class="list">Art Galleria</h3>
+                <div class="art-quote">“Art speaks where words are unable to explain.”</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/twitter?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="list">Quick Links</h3>
+                <div class="quick-links">
+                    <a style="text-decoration: none;" href="home.html">Home</a>
+                   <a style="text-decoration: none;"  href="painting.html">Gallery</a>
+                    <a style="text-decoration: none;" href="about.html">About</a>
+                    <a style="text-decoration: none;" href="contact.html">Contact</a>
+                    
+                    
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="list">Services</h3>
+                <div class="services-links">
+                    <a style="text-decoration: none;" href="service.html">Art Classes</a>
+                    <a style="text-decoration: none;" href="service.html">Custom Artwork</a>
+                    <a style="text-decoration: none;" href="service.html">Online Gallery</a>
+                    <a style="text-decoration: none;" href="service.html">Art Exhibitions</a>
+                    <a style="text-decoration: none;" href="service.html">Art Supplies</a>
+                </div>
+            </div>
+        </div>
+        <p class="rights">&copy; 2025 Art Galleria | All Rights Reserved</p>
+    </footer>
+    
+        
+    
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+        $(".buy-now").click(function () {
+            let title = $(this).data("title");
+            let category = $(this).data("category");
+            let price = $(this).data("price");
+            let image = $(this).data("image");
+            let medium = $(this).data("medium");
+            let orientation = $(this).data("orientation");
+            let color = $(this).data("color");
+
+            $("#modalLabel").text(title);
+            $("#modalCategory").text(category);
+            $("#modalPrice").text(price);
+            $("#modalImage").attr("src", image);
+            $("#modalMedium").text(medium);
+            $("#modalOrientation").text(orientation);
+            $("#modalColor").text(color);
+
+            let myModal = new bootstrap.Modal(document.getElementById('myModal'));
+            myModal.show();
+        });
+    });
+
+    function generateWord() {
+        const title = document.getElementById("modalLabel").innerText;
+        const category = document.getElementById("modalCategory").innerText;
+        const price = document.getElementById("modalPrice").innerText;
+        const medium = document.getElementById("modalMedium").innerText;
+        const orientation = document.getElementById("modalOrientation").innerText;
+        const color = document.getElementById("modalColor").innerText;
+
+        const content = `
+Title: ${title}
+
+Category: ${category}
+Price: ${price}
+Medium: ${medium}
+Orientation: ${orientation}
+Color: ${color}
+`;
+
+        const blob = new Blob([content], { type: "application/msword" });
+        saveAs(blob, `${title}.doc`);
+    }
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" ></script>
+<script>
+    // Get elements
+    const openBtn = document.querySelector(".open-btn");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("close-btn");
+    const overlay = document.getElementById("overlay");
+
+    // Open sidebar
+    openBtn.addEventListener("click", () => {
+        sidebar.classList.add("active");
+        overlay.classList.add("active");
+    });
+
+    // Close sidebar
+    closeBtn.addEventListener("click", () => {
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+    });
+
+    // Close when clicking outside sidebar
+    overlay.addEventListener("click", () => {
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+    });
+</script> 
+</body>
+</html>
